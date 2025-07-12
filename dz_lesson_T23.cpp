@@ -25,22 +25,46 @@ int main()
 	//cout << "Result: " << S << endl;
 
 	// 5
-	char C;
+	//char C;
+	//string S, S0;
+	//cout << "Enter C: ";
+	//cin >> C;
+	//cout << "Enter S: ";
+	//cin.ignore();
+	//getline(cin, S);
+	//cout << "Enter S0: ";
+	//getline(cin, S0);
+	//for (int i = 0; i < S.length(); i++)
+	//{
+	//	if (S[i] == C)
+	//	{
+	//		S.insert(i + 1, S0);
+	//		i += S0.length(); 
+	//	}
+	//}
+	//cout << "Result: " << S << endl;
+
+	// 7
 	string S, S0;
-	cout << "Enter C: ";
-	cin >> C;
-	cout << "Enter S: ";
-	cin.ignore();
+	cout << "Enter text: ";
 	getline(cin, S);
-	cout << "Enter S0: ";
-	getline(cin, S0);
-	for (int i = 0; i < S.length(); i++)
+	cout << "Enter word: ";
+	cin >> S0;
+	int count = 0;
+	int pos = 0;
+	while (true)
 	{
-		if (S[i] == C)
+		pos = S.find(S0, pos);
+		if (pos == -1)
 		{
-			S.insert(i + 1, S0);
-			i += S0.length(); 
+			break;
+		}
+		else
+		{
+			count++;
+			pos += S0.length(); 
 		}
 	}
-	cout << "Result: " << S << endl;
+	cout << "Amount: " << count << endl;
+	
 }
