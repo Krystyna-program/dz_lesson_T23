@@ -45,26 +45,39 @@ int main()
 	//cout << "Result: " << S << endl;
 
 	// 7
+	//string S, S0;
+	//cout << "Enter text: ";
+	//getline(cin, S);
+	//cout << "Enter word: ";
+	//cin >> S0;
+	//int count = 0;
+	//int pos = 0;
+	//while (true)
+	//{
+	//	pos = S.find(S0, pos);
+	//	if (pos == -1)
+	//	{
+	//		break;
+	//	}
+	//	else
+	//	{
+	//		count++;
+	//		pos += S0.length(); 
+	//	}
+	//}
+	//cout << "Amount: " << count << endl;
+
+	// 8
 	string S, S0;
 	cout << "Enter text: ";
 	getline(cin, S);
 	cout << "Enter word: ";
 	cin >> S0;
-	int count = 0;
-	int pos = 0;
-	while (true)
+	int pos = S.find(S0);
+	if (pos != -1)
 	{
-		pos = S.find(S0, pos);
-		if (pos == -1)
-		{
-			break;
-		}
-		else
-		{
-			count++;
-			pos += S0.length(); 
-		}
+		S.erase(pos, S0.length()); 
 	}
-	cout << "Amount: " << count << endl;
+	cout << S << endl;
 	
 }
