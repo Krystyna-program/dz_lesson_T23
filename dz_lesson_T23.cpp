@@ -68,16 +68,30 @@ int main()
 	//cout << "Amount: " << count << endl;
 
 	// 8
-	string S, S0;
+	//string S, S0;
+	//cout << "Enter text: ";
+	//getline(cin, S);
+	//cout << "Enter word: ";
+	//cin >> S0;
+	//int pos = S.find(S0);
+	//if (pos != -1)
+	//{
+	//	S.erase(pos, S0.length()); 
+	//}
+	//cout << S << endl;
+	
+	// 10
+	string S, S1, S2;
 	cout << "Enter text: ";
 	getline(cin, S);
-	cout << "Enter word: ";
-	cin >> S0;
-	int pos = S.find(S0);
+	cout << "Enter word S1: ";
+	cin >> S1;
+	cout << "Enter word S2: ";
+	cin >> S2;
+	int pos = S.find(S1); 
 	if (pos != -1)
 	{
-		S.erase(pos, S0.length()); 
+		S.replace(pos, S1.length(), S2);  
 	}
-	cout << S << endl;
-	
+	cout << "Result: " << S << endl;
 }
