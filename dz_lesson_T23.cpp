@@ -81,6 +81,21 @@ int main()
 	//cout << S << endl;
 	
 	// 10
+	//string S, S1, S2;
+	//cout << "Enter text: ";
+	//getline(cin, S);
+	//cout << "Enter word S1: ";
+	//cin >> S1;
+	//cout << "Enter word S2: ";
+	//cin >> S2;
+	//int pos = S.find(S1); 
+	//if (pos != -1)
+	//{
+	//	S.replace(pos, S1.length(), S2);  
+	//}
+	//cout << "Result: " << S << endl;
+
+	// 11
 	string S, S1, S2;
 	cout << "Enter text: ";
 	getline(cin, S);
@@ -88,10 +103,11 @@ int main()
 	cin >> S1;
 	cout << "Enter word S2: ";
 	cin >> S2;
-	int pos = S.find(S1); 
-	if (pos != -1)
+	int pos = S.find(S1);
+	while (pos != -1)
 	{
-		S.replace(pos, S1.length(), S2);  
+		S.replace(pos, S1.length(), S2);
+		pos = S.find(S1, pos + S2.length());
 	}
 	cout << "Result: " << S << endl;
 }
