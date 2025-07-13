@@ -1,6 +1,25 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
+
+bool isVaildFilesName(string name) {
+	if (name.find("\\") != -1 ||
+		name.find("/") != -1 ||
+		name.find("?") != -1 ||
+		name.find("*") != -1 ||
+		name.find(":") != -1 ||
+		name.find("<") != -1 ||
+		name.find(">") != -1 ||
+		name.find("|") != -1)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
 
 int main()
 {
@@ -132,35 +151,63 @@ int main()
 	//cout << "Result: " << result << endl;
 
 	// 13
-	string C;
-	cout << "Enter text: ";
-	getline(cin, C);
-	int n = C.length();
-	int mid = (n + 1) / 2;
-	string even = "", odd = "";
-	for (int i = 0; i < mid; i++)
-	{
-		even += C[i];
+	//string C;
+	//cout << "Enter text: ";
+	//getline(cin, C);
+	//int n = C.length();
+	//int mid = (n + 1) / 2;
+	//string even = "", odd = "";
+	//for (int i = 0; i < mid; i++)
+	//{
+	//	even += C[i];
+	//}
+	//for (int i = n - 1; i >= mid; i--)
+	//{
+	//	odd += C[i];
+	//}
+	//string result = "";
+	//int i = 0, j = 0;
+	//while (i < odd.length() || j < even.length())
+	//{
+	//	if (i < odd.length())
+	//	{
+	//		result += odd[i]; 
+	//		i++;              
+	//	}
+	//	if (j < even.length())
+	//	{
+	//		result += even[j];
+	//		j++;
+	//	}
+	//}
+	//cout << "Result: " << result << endl;
+
+	// 16
+	ifstream Sa("exe 16-1.txt");
+	ifstream Sb("exe 16-2.txt");
+	ifstream Sc("exe 16-3.txt");
+	string SdName;
+	cout << "Enter result file name: ";
+	cin >> SdName;
+	if (!isVaildFilesName(SdName)) {
+		cout << "Invalid file name!" << endl;
 	}
-	for (int i = n - 1; i >= mid; i--)
-	{
-		odd += C[i];
-	}
-	string result = "";
-	int i = 0, j = 0;
-	while (i < odd.length() || j < even.length())
-	{
-		if (i < odd.length())
-		{
-			result += odd[i]; 
-			i++;              
+	else {
+		ofstream Sd(SdName);
+		if (!Sa.is_open() || !Sb.is_open() || !Sc.is_open() || !Sd.is_open()) {
+			cout << "Error!" << endl;
 		}
-		if (j < even.length())
-		{
-			result += even[j];
-			j++;
+		else {
+			int a, b, c;
+			while ((Sa >> a) && (Sb >> b) && (Sc >> c)) {
+				Sd << a << ' ' << b << ' ' << c << ' ';
+			}
+			Sa.close();
+			Sb.close();
+			Sc.close();
+			Sd.close();
+			cout << "File \"" << SdName << "\" successfully created" << endl;
 		}
 	}
-	cout << "Result: " << result << endl;
 
 }
