@@ -239,7 +239,7 @@ int main()
 
 	// 20
 	ifstream fileRead("f.txt");
-	ofstream fileWrite("information_20-exe.txt");
+	ofstream fileWrite("g");
 	if (fileRead.is_open() && fileWrite.is_open())
 	{
 		int choice;
