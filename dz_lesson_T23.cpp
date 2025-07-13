@@ -96,18 +96,38 @@ int main()
 	//cout << "Result: " << S << endl;
 
 	// 11
-	string S, S1, S2;
+	//string S, S1, S2;
+	//cout << "Enter text: ";
+	//getline(cin, S);
+	//cout << "Enter word S1: ";
+	//cin >> S1;
+	//cout << "Enter word S2: ";
+	//cin >> S2;
+	//int pos = S.find(S1);
+	//while (pos != -1)
+	//{
+	//	S.replace(pos, S1.length(), S2);
+	//	pos = S.find(S1, pos + S2.length());
+	//}
+	//cout << "Result: " << S << endl;
+
+	// 12
+	string C;
 	cout << "Enter text: ";
-	getline(cin, S);
-	cout << "Enter word S1: ";
-	cin >> S1;
-	cout << "Enter word S2: ";
-	cin >> S2;
-	int pos = S.find(S1);
-	while (pos != -1)
+	getline(cin, C);
+	string even = "", odd = "";
+	for (int i = 0; i < C.length(); i++)
 	{
-		S.replace(pos, S1.length(), S2);
-		pos = S.find(S1, pos + S2.length());
+		if ((i + 1) % 2 == 0)  
+			even += C[i];
+		else                  
+			odd += C[i];
 	}
-	cout << "Result: " << S << endl;
+	string reversedOdd = "";
+	for (int i = odd.length() - 1; i >= 0; i--)
+	{
+		reversedOdd += odd[i];
+	}
+	string result = even + reversedOdd;
+	cout << "Result: " << result << endl;
 }
