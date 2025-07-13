@@ -211,30 +211,69 @@ int main()
 	//}
 
 	// 17
-	ifstream inputFile("dates.txt");
-	ofstream daysFile("days.txt");
-	ofstream monthsFile("months.txt");
-	if (!inputFile.is_open() || !daysFile.is_open() || !monthsFile.is_open())
+	//ifstream inputFile("dates.txt");
+	//ofstream daysFile("days.txt");
+	//ofstream monthsFile("months.txt");
+	//if (!inputFile.is_open() || !daysFile.is_open() || !monthsFile.is_open())
+	//{
+	//	cout << "Error" << endl;
+	//}
+	//else
+	//{
+	//	string line;
+	//	while (!inputFile.eof())
+	//	{
+	//		getline(inputFile, line);
+	//		if (line.size() < 10)
+	//			continue;
+	//		string dayStr = line.substr(0, 2);
+	//		string monthStr = line.substr(3, 2);
+	//		daysFile << dayStr << " ";
+	//		monthsFile << monthStr << " ";
+	//	}
+	//}
+	//inputFile.close();
+	//daysFile.close();
+	//monthsFile.close();
+	//cout << "Files days.txt and months.txt created successfully" << endl;
+
+	// 20
+	ifstream fileRead("f.txt");
+	ofstream fileWrite("information_20-exe.txt");
+	if (fileRead.is_open() && fileWrite.is_open())
 	{
-		cout << "Error" << endl;
+		int choice;
+		cout << "Choose output format:" << endl;
+		cout << "1) FirstName Patronymic LastName" << endl;
+		cout << "2) LastName F.P." << endl;
+		cout << "Enter 1 or 2: ";
+		cin >> choice;
+		if (choice == 1 || choice == 2)
+		{
+			string lastName, firstName, patronymic;
+			while (fileRead >> lastName >> firstName >> patronymic)
+			{
+				if (choice == 1)
+				{
+					fileWrite << firstName << " " << patronymic << " " << lastName << endl;
+				}
+				else
+				{
+					fileWrite << lastName << " "
+						<< firstName[0] << "." << patronymic[0] << "." << endl;
+				}
+			}
+			cout << "Successful result!" << endl;
+		}
+		else
+		{
+			cout << "Invalid choice!" << endl;
+		}
+		fileRead.close();
+		fileWrite.close();
 	}
 	else
 	{
-		string line;
-		while (!inputFile.eof())
-		{
-			getline(inputFile, line);
-			if (line.size() < 10)
-				continue;
-			string dayStr = line.substr(0, 2);
-			string monthStr = line.substr(3, 2);
-			daysFile << dayStr << " ";
-			monthsFile << monthStr << " ";
-		}
+		cout << "Error opening file!" << endl;
 	}
-	inputFile.close();
-	daysFile.close();
-	monthsFile.close();
-	cout << "Files days.txt and months.txt created successfully" << endl;
-
 }
