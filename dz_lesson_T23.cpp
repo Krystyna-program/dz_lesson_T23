@@ -183,31 +183,58 @@ int main()
 	//cout << "Result: " << result << endl;
 
 	// 16
-	ifstream Sa("exe 16-1.txt");
-	ifstream Sb("exe 16-2.txt");
-	ifstream Sc("exe 16-3.txt");
-	string SdName;
-	cout << "Enter result file name: ";
-	cin >> SdName;
-	if (!isVaildFilesName(SdName)) {
-		cout << "Invalid file name!" << endl;
+	//ifstream Sa("exe 16-1.txt");
+	//ifstream Sb("exe 16-2.txt");
+	//ifstream Sc("exe 16-3.txt");
+	//string SdName;
+	//cout << "Enter result file name: ";
+	//cin >> SdName;
+	//if (!isVaildFilesName(SdName)) {
+	//	cout << "Invalid file name!" << endl;
+	//}
+	//else {
+	//	ofstream Sd(SdName);
+	//	if (!Sa.is_open() || !Sb.is_open() || !Sc.is_open() || !Sd.is_open()) {
+	//		cout << "Error!" << endl;
+	//	}
+	//	else {
+	//		int a, b, c;
+	//		while ((Sa >> a) && (Sb >> b) && (Sc >> c)) {
+	//			Sd << a << ' ' << b << ' ' << c << ' ';
+	//		}
+	//		Sa.close();
+	//		Sb.close();
+	//		Sc.close();
+	//		Sd.close();
+	//		cout << "File \"" << SdName << "\" successfully created" << endl;
+	//	}
+	//}
+
+	// 17
+	ifstream inputFile("dates.txt");
+	ofstream daysFile("days.txt");
+	ofstream monthsFile("months.txt");
+	if (!inputFile.is_open() || !daysFile.is_open() || !monthsFile.is_open())
+	{
+		cout << "Error" << endl;
 	}
-	else {
-		ofstream Sd(SdName);
-		if (!Sa.is_open() || !Sb.is_open() || !Sc.is_open() || !Sd.is_open()) {
-			cout << "Error!" << endl;
-		}
-		else {
-			int a, b, c;
-			while ((Sa >> a) && (Sb >> b) && (Sc >> c)) {
-				Sd << a << ' ' << b << ' ' << c << ' ';
-			}
-			Sa.close();
-			Sb.close();
-			Sc.close();
-			Sd.close();
-			cout << "File \"" << SdName << "\" successfully created" << endl;
+	else
+	{
+		string line;
+		while (!inputFile.eof())
+		{
+			getline(inputFile, line);
+			if (line.size() < 10)
+				continue;
+			string dayStr = line.substr(0, 2);
+			string monthStr = line.substr(3, 2);
+			daysFile << dayStr << " ";
+			monthsFile << monthStr << " ";
 		}
 	}
+	inputFile.close();
+	daysFile.close();
+	monthsFile.close();
+	cout << "Files days.txt and months.txt created successfully" << endl;
 
 }
