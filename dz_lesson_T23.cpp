@@ -112,22 +112,55 @@ int main()
 	//cout << "Result: " << S << endl;
 
 	// 12
+	//string C;
+	//cout << "Enter text: ";
+	//getline(cin, C);
+	//string even = "", odd = "";
+	//for (int i = 0; i < C.length(); i++)
+	//{
+	//	if ((i + 1) % 2 == 0)  
+	//		even += C[i];
+	//	else                  
+	//		odd += C[i];
+	//}
+	//string reversedOdd = "";
+	//for (int i = odd.length() - 1; i >= 0; i--)
+	//{
+	//	reversedOdd += odd[i];
+	//}
+	//string result = even + reversedOdd;
+	//cout << "Result: " << result << endl;
+
+	// 13
 	string C;
 	cout << "Enter text: ";
 	getline(cin, C);
+	int n = C.length();
+	int mid = (n + 1) / 2;
 	string even = "", odd = "";
-	for (int i = 0; i < C.length(); i++)
+	for (int i = 0; i < mid; i++)
 	{
-		if ((i + 1) % 2 == 0)  
-			even += C[i];
-		else                  
-			odd += C[i];
+		even += C[i];
 	}
-	string reversedOdd = "";
-	for (int i = odd.length() - 1; i >= 0; i--)
+	for (int i = n - 1; i >= mid; i--)
 	{
-		reversedOdd += odd[i];
+		odd += C[i];
 	}
-	string result = even + reversedOdd;
+	string result = "";
+	int i = 0, j = 0;
+	while (i < odd.length() || j < even.length())
+	{
+		if (i < odd.length())
+		{
+			result += odd[i]; 
+			i++;              
+		}
+		if (j < even.length())
+		{
+			result += even[j];
+			j++;
+		}
+	}
 	cout << "Result: " << result << endl;
+
 }
